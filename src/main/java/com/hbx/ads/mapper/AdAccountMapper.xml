@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hbx.ads.mapper.AdAccountMapper" >
+
+    <resultMap id="BaseResultMap" type="com.hbx.ads.domain.sinoclick.AdAccount" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="account_status" property="accountStatus" jdbcType="VARCHAR" />
+        <result column="transfer_and_rest_status" property="transferAndRestStatus" jdbcType="VARCHAR" />
+        <result column="ad_account_name" property="adAccountName" jdbcType="VARCHAR" />
+        <result column="balance" property="balance" jdbcType="VARCHAR" />
+        <result column="ad_account_id" property="adAccountId" jdbcType="VARCHAR" />
+        <result column="recharge_status" property="rechargeStatus" jdbcType="VARCHAR" />
+        <result column="balance_warning_status" property="balanceWarningStatus" jdbcType="VARCHAR" />
+        <result column="disable_warning_status" property="disableWarningStatus" jdbcType="VARCHAR" />
+        <result column="ad_account_system" property="adAccountSystem" jdbcType="VARCHAR" />
+        <result column="ad_account_system_alias" property="adAccountSystemAlias" jdbcType="VARCHAR" />
+        <result column="ad_account_system_status" property="adAccountSystemStatus" jdbcType="VARCHAR" />
+        <result column="update_time" property="updateTime" jdbcType="DATE" />
+        <result column="ad_account_system_bd_name" property="adAccountSystemBdName" jdbcType="VARCHAR" />
+    </resultMap>
+
+
+    <select id="customQueryAdAccountByAdAccounts"  resultMap="BaseResultMap">
+        select * from ad_account
+        <where>
+            ad_account_id in
+            <foreach collection="adAccounts" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </where>
+        order by field ( ad_account_id,
+        <foreach collection="adAccounts" item="item" separator="," close=")">
+        #{item}
+    </foreach>
+    </select>
+
+
+
+</mapper>
