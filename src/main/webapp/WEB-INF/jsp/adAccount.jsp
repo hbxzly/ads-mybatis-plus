@@ -48,6 +48,9 @@
     <div style="float: left;">
         <a href="#" class="easyui-linkbutton" plain="true" icon="icon-edit" onclick="openAccountSystem()">打开后台</a>
     </div>
+    <div style="float: left;">
+        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-edit" onclick="$('#dlg').dialog('open')">绑定BM</a>
+    </div>
     <%-- <div style="float: left;">
          <a href="#" class="easyui-linkbutton" plain="true" icon="icon-reload"
             onclick="update_all_account_system_balance()">更新所有后台</a>
@@ -113,6 +116,11 @@
 <div id="accountRechargeWindow" class="easyui-window" title="账户充值"
      data-options="modal:true,closed:true,resizable:true,iconCls:'icon-save',href:'systemView/adAccountRecharge'"
      style="width:65%;height:65%;padding:10px;">
+</div>
+
+<div id="dlg" class="easyui-dialog" title="Basic Dialog" data-options="iconCls:'icon-save',closed:true" style="width:400px;height:200px;padding:10px">
+    BMID：<input class="easyui-textbox" id="bmId" name="bmId" style="width:150px; vertical-align: middle;"/>
+    <a href="#" class="easyui-linkbutton" plain="true"  onclick="">提交</a>
 </div>
 
 
